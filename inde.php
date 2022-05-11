@@ -57,23 +57,6 @@
 
 // $ballonFoot->lancer();
 
-// class User {
-
-//     public $nom;
-//     public $age;
-
-//     function tchater($message){
-//         echo " - " . $message . "<br>";
-//     }
-
-// }
-
-// $michel = new User();
-
-// $michel->name = 'michel';
-// $michel->age = 49;
-
-// $michel->tchater("$michel->name : Salut salut !");
 
 // --------aperoxercice----------
 ?>
