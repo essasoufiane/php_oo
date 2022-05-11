@@ -67,3 +67,24 @@ class User {
     }
 
 }
+
+$michel = new User();
+
+$michel->name = 'michel';
+$michel->age = 49;
+
+$michel->tchater("$michel->name : Salut salut !");
+
+// --------aperoxercice----------
+
+class impot{
+    public $CA;
+  
+
+    function calcule($CA){
+        $x = $CA*0.2;
+       echo "vous payerais $x € d'impots" ;
+    }
+}
+$impot = new impot();
+$impot->calcule(1000);
