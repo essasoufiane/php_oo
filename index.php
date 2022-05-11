@@ -17,7 +17,7 @@
 
 //  echo "hey le ballon de football, " . $ballonFoot->marque . " est " .$ballonFoot->status . ',Ismael !' . "c'etait un taille " .  $ballonFoot->taille . "c'est ca Issac ?"; 
 
- 
+
 //  ---------syntaxe object operator----------
 //  $ballonFoot = new stdClass;
 //  $ballonFoot->type='Football';
@@ -33,58 +33,89 @@
 
 //  var_dump(get_declared_classes());
 
-class Ballon {
-    public $marque;
-    public $sport;
+// class Ballon {
+//     public $marque;
+//     public $sport;
 
-    function lancer() {
-        echo "vous avez lancé le ballon ! <br>";
-    }
-}
+//     function lancer() {
+//         echo "vous avez lancé le ballon ! <br>";
+//     }
+// }
 
-$ballonFoot = new Ballon();
-$ballonFoot->marque ='Nike';
-$ballonFoot->sport ='Rugby';
+// $ballonFoot = new Ballon();
+// $ballonFoot->marque ='Nike';
+// $ballonFoot->sport ='Rugby';
 
-$ballonRugby = new Ballon();
-$ballonRugby->marque ="Gilbert TM";
-$ballonRugby->sport ="Rugby";
+// $ballonRugby = new Ballon();
+// $ballonRugby->marque ="Gilbert TM";
+// $ballonRugby->sport ="Rugby";
 
 
 // echo "sport $ballonFoot->sport <br> marque: $ballonFoot->marque";
 // echo "<br>";
 // echo "sport $ballonRugby->sport <br> marque: $ballonRugby->marque";
 
-$ballonFoot->lancer();
+// $ballonFoot->lancer();
 
-class User {
+// class User {
 
-    public $nom;
-    public $age;
+//     public $nom;
+//     public $age;
 
-    function tchater($message){
-        echo " - " . $message . "<br>";
-    }
+//     function tchater($message){
+//         echo " - " . $message . "<br>";
+//     }
 
-}
+// }
 
-$michel = new User();
+// $michel = new User();
 
-$michel->name = 'michel';
-$michel->age = 49;
+// $michel->name = 'michel';
+// $michel->age = 49;
 
-$michel->tchater("$michel->name : Salut salut !");
+// $michel->tchater("$michel->name : Salut salut !");
 
 // --------aperoxercice----------
+?>
+<html>
 
-class impot{
+<body>
+    <form method="get">
+        <label for="CA">inserez votre chiffre d'affaire :</label>
+        <input type="text" name="CA">
+        <br>
+        <label for="prenom">Votre prénom :</label>
+        <input type="text" name="prenom">
+        <br>
+        <button type="submit">Envoyer</button>
+    </form>
+</body>
+
+</html>
+
+
+<?php
+// var_dump($_GET);
+// ---calcul d'impot
+class tauxDimposition
+{
+    public $client = null;
     public $CA;
-  
+    public $tauxUrssaf = 0.22;
+    public $tauxImpot = 0.017;
 
-    function calcule($CA){
-        $x = $CA*0.2;
-       echo "vous payerais $x € d'impots" ;
+
+    function calcule($CA)
+    {
+        $u = $CA * $this->tauxUrssaf;
+        $i = $CA * $this->tauxImpot;
+        echo "Bonjour $this->client vous devais payer $u € d'urssaf et $i € d'impots";
     }
 }
-$impot = new impot();
-$impot->calcule(1000);
+
+if (!empty($_GET["prenom"] && $_GET["CA"])){
+    $soufiane = new tauxDimposition();
+
+    $soufiane->client = $_GET["prenom"];
+    $soufiane->calcule($_GET["CA"]);
+}
