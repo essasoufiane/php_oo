@@ -126,5 +126,3 @@ if (!empty($_GET)) {
 }else{
     echo 'Inserer vos données';
 }
-
-     
