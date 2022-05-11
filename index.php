@@ -97,8 +97,8 @@
 <?php
 // var_dump($_GET);
 // ---calcul d'impot
-class tauxDimposition
-{
+class tauxDimposition{
+
     public $client = null;
     public $CA;
     public $tauxUrssaf = 0.22;
@@ -109,13 +109,14 @@ class tauxDimposition
     {
         $u = $CA * $this->tauxUrssaf;
         $i = $CA * $this->tauxImpot;
-        echo "Bonjour $this->client vous devais payer $u € d'urssaf et $i € d'impots";
+        $r = $CA - ($u+$i);
+        echo "Bonjour $this->client vous devais payer $u € d'urssaf et $i € d'impots. <br> Il vous restera $r €";
     }
 }
 
 if (!empty($_GET["prenom"] && $_GET["CA"])){
-    $soufiane = new tauxDimposition();
 
+    $soufiane = new tauxDimposition();
     $soufiane->client = $_GET["prenom"];
     $soufiane->calcule($_GET["CA"]);
 }
