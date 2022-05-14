@@ -65,10 +65,14 @@
 <body>
     <form method="get">
         <label for="CA">inserez votre chiffre d'affaire :</label>
-        <input type="text" name="CA">
+        <input type="number" name="CA">
         <br>
         <label for="prenom">Votre prénom :</label>
         <input type="text" name="prenom">
+        <br>
+        <br>
+        <label for="assurance">Le montant de votre cotisation d'assurance mentuelle:</label>
+        <input type="number" name="assurance">
         <br>
         <button type="submit">Envoyer</button>
     </form>
@@ -87,23 +91,28 @@ class tauxDimposition
     public $CA;
     public $tauxUrssaf = 0.22;
     public $tauxImpot = 0.017;
+    public $assurance = null;
 
 
     function calcule($CA)
     {
         $u = $CA * $this->tauxUrssaf;
         $i = $CA * $this->tauxImpot;
-        $r = $CA - ($u + $i);
-        echo "Bonjour $this->client , <br> Pour un chiffre d'affaire de $CA vous devais payer $u € d'urssaf et $i € d'impots. <br> Il vous restera $r €";
+        $e = $CA / 10;
+        $a = 10 * $this->assurance;
+        $r = ($CA - ($u + $i)) - ($e + $a);
+        echo "Bonjour $this->client , <br> Pour un chiffre d'affaire de $CA vous devais payer $u € d'urssaf et $i € d'impots.<br>On estimera une depense en carburant de 10% ce qui fait un total de $e € pour $CA € de CA <br>
+        Vous payer $this->assurance par moi ce qui nous donne une total de $a par an <br> Il vous restera $r €";
     }
 }
 
 if (!empty($_GET)) {
 
-    if (!empty($_GET["prenom"] && $_GET["CA"])) {
+    if (!empty($_GET["prenom"] && $_GET["CA"] && $_GET["assurance"])) {
     
         $soufiane = new tauxDimposition();
         $soufiane->client = $_GET["prenom"];
+        $soufiane->assurance = $_GET["assurance"];
         $soufiane->calcule($_GET["CA"]);
     }
 }else{

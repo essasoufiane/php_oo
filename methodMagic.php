@@ -25,8 +25,9 @@ $mug = new Verre("mug","metal","slug");
 $mug->nom ="Mug"; 
 $mug->materiaux ="Métal"; 
 $mug->contenu = "Lait"; 
-// var_dump($mug);
 
+var_dump($gobelet);
+var_dump($mug);
 class Voiture{
     public $modele;
     public $couleur;
@@ -87,6 +88,7 @@ class dataBase {
         $req->closeCursor();
 
     }
+ 
 }
 
 $db = new Database(); // grace à __construct connexion à la bdd
@@ -95,3 +97,21 @@ $db = new Database(); // grace à __construct connexion à la bdd
 
 
 $db->creat();
+
+
+// -----------destruc---unset-------------
+
+class Chicken {
+    function __construct()
+    {
+        echo "<p> Object créer </p>";
+    }
+    function __destruct()
+    {
+        echo "<p> Object detruit </p>";
+    }
+}
+
+$nugget= new Chicken();
+
+unset($nugget);
