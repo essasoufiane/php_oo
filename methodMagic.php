@@ -96,7 +96,7 @@ $db = new Database(); // grace à __construct connexion à la bdd
 // var_dump($db->myGames); // TEST 1 rien à ce moment normal !
 
 
-$db->creat();
+// $db->creat();
 
 
 // -----------destruc---unset-------------
